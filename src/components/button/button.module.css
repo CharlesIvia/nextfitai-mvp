@@ -1,0 +1,133 @@
+/* Base Button Styles */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 3.2rem;
+  border: none;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  background-size: 200% auto;
+  color: white;
+}
+
+/* Primary Button */
+.buttonPrimary {
+  background-image: linear-gradient(45deg, #ff6b6b 0%, #ff8e53 50%, #ff6b6b 100%);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+}
+
+/* Alternative Gradients */
+.buttonBlue {
+  background-image: linear-gradient(45deg, #4158d0 0%, #c850c0 50%, #4158d0 100%);
+  box-shadow: 0 4px 15px rgba(65, 88, 208, 0.2);
+}
+
+.buttonPurple {
+  background-image: linear-gradient(45deg, #8b5cf6 0%, #d946ef 50%, #8b5cf6 100%);
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+}
+
+/* Hover Effects */
+.button:hover {
+  background-position: right center;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Active State */
+.button:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading State */
+.buttonLoading {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.buttonLoading::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+/* Icon Support */
+.buttonIcon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.buttonIcon svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  transition: transform 0.2s ease;
+}
+
+.buttonIcon:hover svg {
+  transform: translateX(3px);
+}
+
+/* Sizes */
+.buttonSmall {
+  padding: 1.2rem 2.4rem;
+  font-size: 1.4rem;
+}
+
+.buttonLarge {
+  padding: 2rem 4rem;
+  font-size: 1.8rem;
+}
+
+/* Animation Keyframes */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Outline variant */
+.buttonOutline {
+  background: transparent;
+  border: 2px solid currentColor;
+  background-image: none;
+  color: var(--link);
+}
+
+.buttonOutline:hover {
+  background: rgba(var(--link-rgb), 0.1);
+  color: var(--link-dark);
+}
+
+/* Usage in your current styles */
+.heroleft button,
+.cta button {
+  margin: 3rem 0;
+  min-width: 20rem;
+  font-weight: 700;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .heroleft button,
+  .cta button {
+    width: 100%;
+    max-width: 100%;
+    padding: 1.6rem 2.4rem;
+  }
+}

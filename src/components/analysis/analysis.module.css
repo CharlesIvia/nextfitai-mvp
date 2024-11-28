@@ -1,0 +1,120 @@
+.analysisWrapper {
+  background-color: white;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.analysisHeader {
+  border-bottom: 1px solid #e2e8f0;
+  background: linear-gradient(to right, #f8fafc, #f1f5f9);
+  padding: 2.5rem;
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.875rem; /* Increased from 1.5rem */
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.editingWarning {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem; /* Slightly wider padding */
+  background-color: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9999px;
+}
+
+.warningText {
+  font-size: 1rem; /* Increased from 0.875rem */
+  color: #9a3412;
+}
+
+.analysisContent {
+  padding: 2.5rem; /* Increased from 2rem */
+}
+
+/* Markdown Styles */
+.markdownContent {
+  color: #1e293b;
+  line-height: 1.7; /* Slightly increased line height */
+  font-size: 1.125rem; /* Base font size increase */
+}
+
+.markdownContent h1,
+.markdownContent h2,
+.markdownContent h3,
+.markdownContent h4 {
+  font-weight: 600;
+  color: #0f172a;
+  margin: 2rem 0 1.25rem; /* Increased margins */
+}
+
+.markdownContent h3 {
+  font-size: 1.8rem; /* Increased from 1.25rem */
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.markdownContent p {
+  margin-bottom: 1.5rem; /* Increased from 1.25rem */
+  color: #475569;
+  font-size: 1.5rem;
+}
+
+.markdownContent ul {
+  margin: 1.5rem 0; /* Increased from 1.25rem */
+  display: grid;
+  gap: 1rem; /* Increased from 0.75rem */
+  list-style: none;
+}
+
+.markdownContent li {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 1.5rem; /* Increased from 1.25rem */
+  transition: all 0.2s ease;
+  list-style-type: none;
+  font-size: 1.4rem; /* Explicitly set li font size */
+}
+
+.markdownContent li:hover {
+  background-color: #f1f5f9;
+  border-color: #cbd5e1;
+  transform: translateX(4px);
+}
+
+.markdownContent strong {
+  color: #0f172a;
+  font-weight: 600;
+  font-size: 1.6rem; /* Added explicit size for bold text */
+}
+
+@media (max-width: 768px) {
+  .analysisHeader {
+    padding: 2rem; /* Increased from 1.5rem */
+  }
+
+  .analysisContent {
+    padding: 2rem; /* Increased from 1.5rem */
+  }
+
+  .headerContent {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem; /* Increased from 1rem */
+  }
+
+  .editingWarning {
+    width: 100%;
+    justify-content: center;
+  }
+}

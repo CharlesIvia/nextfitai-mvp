@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.socials {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.links a {
+  color: var(--link);
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.copy p {
+  font-size: 1.4rem;
+  color: var(--link);
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+  }
+}

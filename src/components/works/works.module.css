@@ -1,0 +1,58 @@
+.step {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+
+.stepNumber {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 6rem;
+  background: #bdcdd7;
+  border-radius: 50%;
+  /* New styles to center the number */
+  position: relative; /* To position the number absolutely */
+}
+
+.stepNumber p {
+  position: absolute; /* Position the number absolutely */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the number */
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.stepDetails {
+  display: flex;
+  flex-direction: column;
+  border: 0.1rem solid #bdcdd7;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.stepDetails p {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--dark);
+  line-height: 3.2rem;
+}
+
+.stepDetails p span {
+  color: var(--light);
+  background-color: var(--green);
+  font-size: 1.8rem;
+  line-height: 3.2rem;
+  padding: 0.2rem 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .stepNumber {
+    width: 7rem;
+  }
+}

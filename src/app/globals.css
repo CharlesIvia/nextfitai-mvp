@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+:root {
+  --white: #fff;
+  --black: #000;
+  --dark: #2b4350;
+  --light: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+  --lightBg: #eee9da;
+  --pink: #ff00ff;
+  --violet: #8a2be2;
+  --green: #14c08c;
+  --link: #6196b5;
+  --link-dark: #2b4350;
+  --yellow: #fcbe24;
+  --paraLineHeight: 3.2rem;
+  --paraFontSize: 1.8rem;
+  --border: #e2e8f0; /* or #E5E7EB */
+  --gray: #64748b;
+
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+  --secondary: #3b82f6;
+  --background: #f8fafc;
+  --white: #ffffff;
+  --black: #0f172a;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background: var(--light);
+}

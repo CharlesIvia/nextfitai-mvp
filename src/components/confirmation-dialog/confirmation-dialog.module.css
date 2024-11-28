@@ -1,0 +1,104 @@
+/* components/confirmation-dialog/confirmation-dialog.module.css */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.dialog {
+  background: white;
+  border-radius: 1.2rem;
+  padding: 2.4rem;
+  width: 90%;
+  max-width: 40rem;
+  animation: slideUp 0.3s ease-out;
+}
+
+.dialog h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1.2rem;
+}
+
+.dialog p {
+  font-size: 1.6rem;
+  color: #64748b;
+  margin-bottom: 2.4rem;
+  line-height: 1.5;
+}
+
+.buttons {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.buttons button {
+  flex: 1;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+.cancelButton:hover {
+  background: #e2e8f0;
+}
+
+.confirmButton {
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  color: white;
+  border: none;
+}
+
+.confirmButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(14, 165, 233, 0.2);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .dialog {
+    padding: 2rem;
+    margin: 0 1.6rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,121 @@
+/* components/pricing-card/pricing-card.module.css */
+.pricingCard {
+  background: white;
+  border-radius: 2rem;
+  padding: 4rem 3rem;
+  position: relative;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pricingCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.popular {
+  border: 2px solid var(--link);
+  background: linear-gradient(to bottom, white, rgba(var(--link-rgb), 0.03));
+}
+
+.popularBadge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--link);
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 2rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.cardHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.cardHeader h3 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+.price {
+  margin-bottom: 1.5rem;
+}
+
+.amount {
+  font-size: 4.8rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.period {
+  font-size: 1.8rem;
+  color: var(--gray);
+}
+
+.cardHeader p {
+  font-size: 1.6rem;
+  color: var(--gray);
+}
+
+.features {
+  list-style: none;
+  margin-bottom: 3rem;
+  flex-grow: 1;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: var(--dark);
+}
+
+.checkmark {
+  color: var(--link);
+  font-weight: bold;
+}
+
+.pricingButton {
+  width: 100%;
+  padding: 1.5rem;
+  border: none;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--dark);
+  color: white;
+}
+
+.popularButton {
+  background: var(--link);
+}
+
+.pricingButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+@media (hover: hover) {
+  .pricingCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricingButton:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
