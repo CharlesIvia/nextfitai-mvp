@@ -1,0 +1,285 @@
+.signup {
+  padding: 0 5vw;
+}
+
+.container {
+  background-color: var(--white);
+  padding: 4rem;
+  border-radius: 1.6rem;
+  box-shadow: 0 0.4rem 2.4rem rgba(0, 0, 0, 0.08);
+  max-width: 45rem;
+  width: 90%;
+  margin: 12.5vh auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.top {
+  text-align: center;
+}
+
+.top h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1.2rem;
+}
+
+.top p {
+  font-size: 1.6rem;
+  color: var(--gray);
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Input Container for validation styling */
+.inputContainer {
+  position: relative;
+  width: 100%;
+}
+
+.container form input {
+  width: 100%;
+  padding: 1.4rem;
+  font-size: 1.6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid var(--border);
+  background-color: var(--light);
+  transition: all 0.2s ease;
+}
+
+.container form input:focus {
+  border-color: var(--link);
+  outline: none;
+}
+
+/* Email validation states */
+.container form input.errorInput {
+  border-color: var(--error, #ff4d4f);
+  background-color: var(--error-light, rgba(255, 77, 79, 0.05));
+}
+
+.container form input.warningInput {
+  border-color: var(--warning, #faad14);
+  background-color: var(--warning-light, rgba(250, 173, 20, 0.05));
+}
+
+.container form input.successInput {
+  border-color: var(--success, #52c41a);
+  background-color: var(--success-light, rgba(82, 196, 26, 0.05));
+}
+
+/* Validation message styling */
+.validationMessage {
+  position: absolute;
+  font-size: 1.2rem;
+  margin: 0.8rem;
+  left: 0;
+
+  animation: fadeIn 0.2s ease;
+}
+
+.validationMessage.error {
+  color: var(--error, #ff4d4f);
+}
+
+.validationMessage.warning {
+  color: var(--warning, #faad14);
+}
+
+.validationMessage.success {
+  color: var(--success, #52c41a);
+}
+
+.container button {
+  width: 100%;
+  padding: 1.4rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-radius: 0.8rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.container form button {
+  background-color: var(--link);
+  color: var(--white);
+}
+
+.container form button:hover {
+  background-color: var(--link-dark);
+}
+
+.container form button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background-color: var(--gray);
+}
+
+.submitButton {
+  margin-top: 1.2rem;
+}
+
+.message {
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  text-align: center;
+  animation: fadeIn 0.2s ease;
+}
+
+.message.error {
+  background-color: var(--error-light, rgba(255, 77, 79, 0.1));
+  color: var(--error, #ff4d4f);
+}
+
+.message.success {
+  background-color: var(--success-light, rgba(82, 196, 26, 0.1));
+  color: var(--success, #52c41a);
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 0.8rem;
+}
+
+.divider span {
+  flex-grow: 1;
+  height: 0.1rem;
+  background-color: var(--border);
+}
+
+.divider p {
+  font-size: 1.4rem;
+  color: var(--gray);
+}
+
+.googleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  background-color: var(--lightBg);
+  border: 0.1rem solid var(--border);
+  color: var(--dark);
+}
+
+.googleButton:hover {
+  background-color: var(--light);
+}
+
+.googleButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.googleButton span {
+  font-size: 1.6rem;
+}
+
+.exists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+}
+
+.exists p {
+  color: var(--gray);
+}
+
+.exists a {
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.terms {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--gray);
+}
+
+.terms a {
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.loadingContainer {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--white);
+}
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--gray-200);
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+}
+
+.loader::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  border-bottom-color: var(--primary);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 2.4rem;
+    width: 95%;
+    margin: 8vh auto 0;
+  }
+
+  .top h1 {
+    font-size: 2.4rem;
+  }
+
+  .validationMessage {
+    font-size: 1.1rem;
+  }
+}

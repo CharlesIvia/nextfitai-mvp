@@ -3,20 +3,27 @@ export const siteConfig = {
     {
       name: "Basic",
       price: "15",
-      description: "Perfect for your first job search",
-      features: ["AI Resume Analysis", "Keyword Optimization", "ATS Compatibility Check", "Basic Templates"],
+      description: "Perfect for targeted job applications",
+      features: [
+        "AI Resume Analysis",
+        "Job Match Prediction",
+        "Basic Optimization Insights",
+        "ATS Compatibility Check",
+        "Application Form Auto-fill",
+      ],
       disabled: false,
     },
     {
       name: "Pro",
       price: "29",
-      description: "For serious job seekers",
+      description: "For active job seekers",
       features: [
         "Everything in Basic",
-        "Advanced AI Optimization",
-        "Industry-Specific Formats",
-        "Multiple Resume Versions",
-        "Custom Templates",
+        "Advanced Success Predictions",
+        "In-depth Application Analysis",
+        "Multiple Job Comparisons",
+        "Custom Optimization Strategies",
+        "Interview Question Preparation",
         "Priority Support",
       ],
       isPopular: true,
@@ -25,13 +32,14 @@ export const siteConfig = {
     {
       name: "Enterprise",
       price: "Custom",
-      description: "For teams and organizations",
+      description: "For recruitment teams & organizations",
       features: [
         "Everything in Pro",
         "Team Dashboard",
-        "Bulk Processing",
+        "Bulk Candidate Processing",
         "Custom Integration",
         "API Access",
+        "Advanced Analytics",
         "Dedicated Support",
       ],
       disabled: false,
@@ -41,10 +49,10 @@ export const siteConfig = {
   features: [
     {
       id: "ai-analysis",
-      title: "Smart AI Analysis",
+      title: "Smart Job Match Prediction",
       description:
-        "Our AI analyzes your resume against job requirements, comparing it with millions of successful applications. Get instant insights on how to improve your resume and increase your callback chances.",
-      stats: ["1M+ resumes analyzed", "30-second analysis", "95% accuracy"],
+        "Our AI analyzes your resume against specific job requirements, predicting your callback probability and suggesting optimizations. Save time by focusing on applications where you're most likely to succeed.",
+      stats: ["85% prediction accuracy", "30-second analysis", "Save 10+ hours/week"],
       theme: {
         bgColor: "#13172a",
         fillColor: "#5ee1c9",
@@ -56,10 +64,10 @@ export const siteConfig = {
     },
     {
       id: "optimization",
-      title: "Resume Optimization",
+      title: "Intelligent Application Assistant",
       description:
-        "Get AI-powered suggestions to optimize every section of your resume. Our system identifies missing keywords, improves impact statements, and ensures your experience stands out to both ATS and human recruiters.",
-      stats: ["85% callback rate", "500+ templates", "24/7 optimization"],
+        "Get AI-powered suggestions for every aspect of your application. From resume optimization to application forms, our system ensures you present your best self to both ATS and human recruiters.",
+      stats: ["85% callback rate", "Auto-fill forms", "24/7 optimization"],
       theme: {
         bgColor: "#f9f9f9",
         fillColor: "#0e5dff",
@@ -68,10 +76,10 @@ export const siteConfig = {
     },
     {
       id: "ats-optimization",
-      title: "ATS Compatibility",
+      title: "ATS & Recruiter Optimization",
       description:
-        "Ensure your resume gets past Applicant Tracking Systems. We analyze formatting, keywords, and content to maximize your resume's visibility to recruiters.",
-      stats: ["100% ATS compatible", "Key term analysis", "Format verification"],
+        "Don't just pass ATS - impress human recruiters too. We analyze formatting, keywords, and content to ensure your application resonates with both automated systems and hiring managers.",
+      stats: ["100% ATS compatible", "Recruiter insights", "Keyword optimization"],
       theme: {
         bgColor: "#f9f9f9",
         fillColor: "#5b50fd",
@@ -80,10 +88,10 @@ export const siteConfig = {
     },
     {
       id: "targeted-matching",
-      title: "Job-Specific Targeting",
+      title: "Smart Application Strategy",
       description:
-        "Create perfectly tailored resumes for each job application. Our AI helps you match your experience and skills to specific job requirements and company preferences.",
-      stats: ["Perfect match", "Company insights", "Role analysis"],
+        "Know your chances before you apply. Our AI predicts your success rate for each role and helps you tailor your approach, saving time on applications unlikely to convert.",
+      stats: ["Success prediction", "Time savings", "Strategic insights"],
       theme: {
         bgColor: "#13172a",
         fillColor: "#dfaaff",
@@ -95,10 +103,10 @@ export const siteConfig = {
     },
     {
       id: "market-intelligence",
-      title: "Industry Insights",
+      title: "Real-time Job Intelligence",
       description:
-        "Access real-time data on industry trends, in-demand skills, and role requirements. Our AI monitors thousands of job postings to give you the latest insights for your target role.",
-      stats: ["Daily updates", "Skills trends", "Role requirements"],
+        "Make informed decisions with real-time market insights. Our AI analyzes thousands of job postings to show you which roles match your profile and where you need to upskill.",
+      stats: ["Live job analysis", "Skill gap insights", "Market trends"],
       theme: {
         bgColor: "#13172a",
         fillColor: "#5ee1c9",
@@ -110,10 +118,10 @@ export const siteConfig = {
     },
     {
       id: "expert-support",
-      title: "Expert Support",
+      title: "Application Support",
       description:
-        "Join our community of 10,000+ professionals sharing job search experiences. Get support from our AI and access to resume experts for complex situations.",
-      stats: ["10K+ community", "24/7 support", "Expert access"],
+        "Never apply alone. Get AI-powered assistance for every step of your application process, from resume optimization to interview preparation.",
+      stats: ["24/7 AI support", "Interview prep", "Application guidance"],
       theme: {
         bgColor: "#f9f9f9",
         fillColor: "#0e5dff",
@@ -124,28 +132,28 @@ export const siteConfig = {
   steps: [
     {
       number: 1,
-      stepTitle: "Upload Your Resume",
-      stepDescription: "Submit your current resume and target job descriptions.",
+      stepTitle: "Upload Resume & Job",
+      stepDescription: "Submit your resume and the job you're interested in.",
     },
     {
       number: 2,
-      stepTitle: "AI Analysis",
-      stepDescription: "Get instant analysis of your resume's strengths and weaknesses.",
+      stepTitle: "Get Success Prediction",
+      stepDescription: "Instantly see your match rate and callback probability.",
     },
     {
       number: 3,
-      stepTitle: "Optimize Content",
-      stepDescription: "Follow AI suggestions to improve your resume.",
+      stepTitle: "Review Insights",
+      stepDescription: "Get actionable optimization suggestions and strategies.",
     },
     {
       number: 4,
-      stepTitle: "Match to Jobs",
-      stepDescription: "Tailor your resume to specific job requirements.",
+      stepTitle: "Optimize Application",
+      stepDescription: "Let AI help you tailor your application perfectly.",
     },
     {
       number: 5,
-      stepTitle: "Track Progress",
-      stepDescription: "Monitor your application success rate.",
+      stepTitle: "Apply With Confidence",
+      stepDescription: "Submit your application and track your success.",
     },
   ],
 };

@@ -70,8 +70,8 @@ export default function Home() {
             </div>
             <div className={styles.heroDescription}>
               <p>
-                NextFit AI uses <span>AI-powered intelligence</span> to optimize your resume and maximize interview
-                callbacks.
+                NextFit AI uses <span>AI-powered intelligence</span> to analyze your fit for jobs and maximize interview
+                callbacks. Save time applying only to roles where you'll succeed.
               </p>
             </div>
             <Link
@@ -157,7 +157,7 @@ export default function Home() {
         <div className={styles.pricingFooter}>
           <div className={styles.guarantee}>
             <Image src='/guarantee.png' alt='Money Back Guarantee' width={50} height={50} />
-            <p>100% Money Back Guarantee if we can't improve your callbacks</p>
+            <p>100% Money Back Guarantee if we don't save you time and improve your callbacks</p>
           </div>
         </div>
       </section>
