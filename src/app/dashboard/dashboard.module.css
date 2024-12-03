@@ -56,8 +56,8 @@
 }
 
 .logoIcon {
-  width: 3rem;
-  height: 3rem;
+  width: 4rem;
+  height: 4rem;
   background: linear-gradient(135deg, #0ea5e9, #3b82f6);
   border-radius: 0.8rem;
   display: flex;
@@ -66,14 +66,14 @@
 }
 
 .logoIcon svg {
-  width: 2rem;
-  height: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
   color: white;
 }
 
 .logo span {
   font-weight: 600;
-  font-size: 1.6rem;
+  font-size: 2rem;
   color: #0f172a;
 }
 
@@ -527,21 +527,6 @@
 @media (min-width: 768px) {
   .logo {
     gap: 1.2rem;
-  }
-
-  .logoIcon {
-    width: 3.6rem;
-    height: 3.6rem;
-    border-radius: 1rem;
-  }
-
-  .logoIcon svg {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
-
-  .logo span {
-    font-size: 1.8rem;
   }
 
   .headerActions {

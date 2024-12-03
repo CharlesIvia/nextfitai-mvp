@@ -1,10 +1,23 @@
 "use client";
 
-import { FileText, ArrowLeft, Upload, Clock, CheckCircle2, AlertCircle, ArrowRight } from "lucide-react";
+import {
+  FileText,
+  ArrowLeft,
+  Upload,
+  Clock,
+  CheckCircle2,
+  AlertCircle,
+  ArrowRight,
+  TrendingUp,
+  User,
+  Settings,
+} from "lucide-react";
 import styles from "./applications.module.css";
 import Link from "next/link";
 import { useState } from "react";
 import { ResumeAnalysisModal } from "@/components/resume-analysis-modal/steps";
+import { useRouter } from "next/navigation";
+import Header from "@/components/header/header";
 
 const STATUS_MAP = {
   pending: {
@@ -32,6 +45,8 @@ const STATUS_MAP = {
 export default function Applications() {
   const [showAnalysisModal, setShowAnalysisModal] = useState(false);
   const [modalMode, setModalMode] = useState<"select" | "upload">("select");
+
+  const router = useRouter();
 
   const handleStartAnalysis = (mode: "select" | "upload") => {
     setModalMode(mode);
@@ -82,12 +97,7 @@ export default function Applications() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
-        <div className={styles.header}>
-          <Link href='/dashboard' className={styles.backButton}>
-            <ArrowLeft size={20} />
-            Back to Dashboard
-          </Link>
-        </div>
+        <Header />
 
         <div className={styles.startSection}>
           <h2>New Application Analysis</h2>

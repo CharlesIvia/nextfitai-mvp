@@ -1,7 +1,25 @@
 .container {
-  padding: 2.4rem;
-  max-width: 1200px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+}
+
+.content {
+  max-width: 100%;
   margin: 0 auto;
+  padding: 1.6rem;
+  padding-bottom: 120px;
+}
+
+.settingsWrapper {
+  margin-top: 5.6rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  border-radius: 1.6rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .header {
@@ -33,14 +51,6 @@
   font-size: 2.4rem;
   font-weight: 600;
   color: #0f172a;
-}
-
-.content {
-  background: white;
-  border-radius: 1.6rem;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
 }
 
 .settingsSection {
@@ -294,8 +304,8 @@ input:checked + .slider:before {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .container {
-    padding: 1.6rem;
+  .content {
+    max-width: 768px;
   }
 
   .header {
@@ -341,8 +351,8 @@ input:checked + .slider:before {
 
 /* High-resolution screens */
 @media (min-width: 1536px) {
-  .container {
-    max-width: 1400px;
+  .content {
+    max-width: 1200px;
   }
 
   .settingItem {

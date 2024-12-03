@@ -2,7 +2,6 @@
 .container {
   min-height: 100vh;
   background: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
-  padding: 1.6rem;
 }
 
 .content {
@@ -537,6 +536,7 @@
   text-align: center;
   margin-bottom: 4.8rem;
   border: 1px solid #e2e8f0;
+  margin-top: 5.6rem;
 }
 
 .startSection h2 {
@@ -629,10 +629,6 @@
 
 /* Tablet Breakpoint */
 @media (min-width: 768px) {
-  .container {
-    padding: 2.4rem;
-  }
-
   .content {
     max-width: 768px;
   }

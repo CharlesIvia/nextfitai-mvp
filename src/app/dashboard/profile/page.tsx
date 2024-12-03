@@ -5,6 +5,7 @@ import styles from "./profile.module.css";
 import { useRouter } from "next/navigation";
 import { useGetUserProfileQuery, useUpdateUserProfileMutation } from "@/services/api";
 import { Toast } from "@/components/toast/toast";
+import Header from "@/components/header/header";
 
 interface ProfileData {
   name: string;
@@ -102,126 +103,123 @@ export default function Profile() {
         <Toast message={notification.message} type={notification.type} onClose={() => setNotification(null)} />
       )}
 
-      <div className={styles.header}>
-        <button className={styles.backButton} onClick={() => router.push("/dashboard")}>
-          <ArrowLeft size={20} />
-          Back to Dashboard
-        </button>
-      </div>
-
       <div className={styles.content}>
-        <div className={styles.profileSection}>
-          <div className={styles.profileHeader}>
-            <div className={styles.avatarContainer}>
-              <div className={styles.avatar}>
-                <User size={40} />
+        <Header />
+
+        <div className={styles.profileWrapper}>
+          <div className={styles.profileSection}>
+            <div className={styles.profileHeader}>
+              <div className={styles.avatarContainer}>
+                <div className={styles.avatar}>
+                  <User size={40} />
+                </div>
+                <button className={styles.uploadButton} disabled>
+                  Change Photo
+                </button>
               </div>
-              <button className={styles.uploadButton} disabled>
-                Change Photo
+            </div>
+
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <div className={styles.formGrid}>
+                <div className={styles.formGroup}>
+                  <label htmlFor='name'>Full Name</label>
+                  <div className={styles.inputWrapper}>
+                    <User size={20} />
+                    <input
+                      id='name'
+                      type='text'
+                      value={profileData.name}
+                      onChange={handleInputChange("name")}
+                      placeholder='Enter your full name'
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor='email'>Email</label>
+                  <div className={styles.inputWrapper}>
+                    <Mail size={20} />
+                    <input
+                      id='email'
+                      type='email'
+                      value={profileData.email}
+                      onChange={handleInputChange("email")}
+                      placeholder='Enter your email'
+                      readOnly // Email should typically be read-only
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor='company'>Company</label>
+                  <div className={styles.inputWrapper}>
+                    <Building size={20} />
+                    <input
+                      id='company'
+                      type='text'
+                      value={profileData.company}
+                      onChange={handleInputChange("company")}
+                      placeholder='Enter your company'
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor='position'>Position</label>
+                  <div className={styles.inputWrapper}>
+                    <Briefcase size={20} />
+                    <input
+                      id='position'
+                      type='text'
+                      value={profileData.position}
+                      onChange={handleInputChange("position")}
+                      placeholder='Enter your position'
+                    />
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor='experience'>Experience Level</label>
+                  <div className={styles.selectWrapper}>
+                    <select id='experience' value={profileData.experience} onChange={handleInputChange("experience")}>
+                      {EXPERIENCE_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className={styles.formGroup}>
+                  <label htmlFor='industry'>Industry</label>
+                  <div className={styles.selectWrapper}>
+                    <select id='industry' value={profileData.industry} onChange={handleInputChange("industry")}>
+                      {INDUSTRY_OPTIONS.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <button type='submit' className={styles.saveButton} disabled={isUpdating}>
+                {isUpdating ? (
+                  <>
+                    <span className={styles.spinner} />
+                    Saving...
+                  </>
+                ) : (
+                  <>
+                    <Save size={20} />
+                    Save Changes
+                  </>
+                )}
               </button>
-            </div>
+            </form>
           </div>
-
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.formGrid}>
-              <div className={styles.formGroup}>
-                <label htmlFor='name'>Full Name</label>
-                <div className={styles.inputWrapper}>
-                  <User size={20} />
-                  <input
-                    id='name'
-                    type='text'
-                    value={profileData.name}
-                    onChange={handleInputChange("name")}
-                    placeholder='Enter your full name'
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor='email'>Email</label>
-                <div className={styles.inputWrapper}>
-                  <Mail size={20} />
-                  <input
-                    id='email'
-                    type='email'
-                    value={profileData.email}
-                    onChange={handleInputChange("email")}
-                    placeholder='Enter your email'
-                    readOnly // Email should typically be read-only
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor='company'>Company</label>
-                <div className={styles.inputWrapper}>
-                  <Building size={20} />
-                  <input
-                    id='company'
-                    type='text'
-                    value={profileData.company}
-                    onChange={handleInputChange("company")}
-                    placeholder='Enter your company'
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor='position'>Position</label>
-                <div className={styles.inputWrapper}>
-                  <Briefcase size={20} />
-                  <input
-                    id='position'
-                    type='text'
-                    value={profileData.position}
-                    onChange={handleInputChange("position")}
-                    placeholder='Enter your position'
-                  />
-                </div>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor='experience'>Experience Level</label>
-                <div className={styles.selectWrapper}>
-                  <select id='experience' value={profileData.experience} onChange={handleInputChange("experience")}>
-                    {EXPERIENCE_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className={styles.formGroup}>
-                <label htmlFor='industry'>Industry</label>
-                <div className={styles.selectWrapper}>
-                  <select id='industry' value={profileData.industry} onChange={handleInputChange("industry")}>
-                    {INDUSTRY_OPTIONS.map((option) => (
-                      <option key={option.value} value={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
-
-            <button type='submit' className={styles.saveButton} disabled={isUpdating}>
-              {isUpdating ? (
-                <>
-                  <span className={styles.spinner} />
-                  Saving...
-                </>
-              ) : (
-                <>
-                  <Save size={20} />
-                  Save Changes
-                </>
-              )}
-            </button>
-          </form>
         </div>
       </div>
     </div>

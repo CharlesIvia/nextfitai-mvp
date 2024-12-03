@@ -1,7 +1,25 @@
 .container {
-  padding: 2.4rem;
-  max-width: 1200px;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
+}
+
+.content {
+  max-width: 100%;
   margin: 0 auto;
+  padding: 1.6rem;
+  padding-bottom: 120px;
+}
+
+.profileWrapper {
+  margin-top: 5.6rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  background: white;
+  border-radius: 1.6rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .header {
@@ -33,12 +51,6 @@
   font-size: 2.4rem;
   font-weight: 600;
   color: #0f172a;
-}
-
-.content {
-  background: white;
-  border-radius: 1.6rem;
-  border: 1px solid #e2e8f0;
 }
 
 .profileSection {
@@ -244,6 +256,10 @@
 }
 
 @media (max-width: 768px) {
+  .content {
+    max-width: 100%;
+  }
+
   .formGrid {
     grid-template-columns: 1fr;
   }
@@ -254,5 +270,11 @@
 
   .profileSection {
     padding: 2.4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    max-width: 1200px;
   }
 }
