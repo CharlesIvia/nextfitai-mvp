@@ -49,10 +49,10 @@ export const siteConfig = {
   features: [
     {
       id: "ai-analysis",
-      title: "Smart Job Match Prediction",
+      title: "Match Prediction & Scoring",
       description:
-        "Our AI analyzes your resume against specific job requirements, predicting your callback probability and suggesting optimizations. Save time by focusing on applications where you're most likely to succeed.",
-      stats: ["85% prediction accuracy", "30-second analysis", "Save 10+ hours/week"],
+        "Get instant feedback on your fit for any role. Our AI analyzes your resume against job requirements and predicts your callback probability with 85% accuracy.",
+      stats: ["85% prediction accuracy", "30-sec analysis", "2x faster hiring"],
       theme: {
         bgColor: "#13172a",
         fillColor: "#5ee1c9",
@@ -64,10 +64,10 @@ export const siteConfig = {
     },
     {
       id: "optimization",
-      title: "Intelligent Application Assistant",
+      title: "One-Click Resume Optimization",
       description:
-        "Get AI-powered suggestions for every aspect of your application. From resume optimization to application forms, our system ensures you present your best self to both ATS and human recruiters.",
-      stats: ["85% callback rate", "Auto-fill forms", "24/7 optimization"],
+        "Stop guessing what recruiters want. Our AI automatically tailors your resume for each role, highlighting relevant experience and skills that matter.",
+      stats: ["85% callback rate", "ATS-optimized", "Auto-formatting"],
       theme: {
         bgColor: "#f9f9f9",
         fillColor: "#0e5dff",
@@ -75,56 +75,29 @@ export const siteConfig = {
       icon: "strategy",
     },
     {
-      id: "ats-optimization",
-      title: "ATS & Recruiter Optimization",
-      description:
-        "Don't just pass ATS - impress human recruiters too. We analyze formatting, keywords, and content to ensure your application resonates with both automated systems and hiring managers.",
-      stats: ["100% ATS compatible", "Recruiter insights", "Keyword optimization"],
-      theme: {
-        bgColor: "#f9f9f9",
-        fillColor: "#5b50fd",
-      },
-      icon: "pkg",
-    },
-    {
       id: "targeted-matching",
       title: "Smart Application Strategy",
       description:
-        "Know your chances before you apply. Our AI predicts your success rate for each role and helps you tailor your approach, saving time on applications unlikely to convert.",
-      stats: ["Success prediction", "Time savings", "Strategic insights"],
+        "Apply smarter, not harder. Focus on roles where you're most likely to succeed, saving time and increasing your chances of landing interviews.",
+      stats: ["10+ hours saved/week", "Strategic insights", "Higher success rate"],
       theme: {
-        bgColor: "#13172a",
-        fillColor: "#dfaaff",
-        titleColor: "#f9f9f9",
-        textColor: "#f9f9f9",
-        isDark: true,
+        bgColor: "#f9f9f9",
+        fillColor: "#0e5dff",
       },
       icon: "time",
     },
     {
-      id: "market-intelligence",
-      title: "Real-time Job Intelligence",
+      id: "interview-prep",
+      title: "Interview Intelligence",
       description:
-        "Make informed decisions with real-time market insights. Our AI analyzes thousands of job postings to show you which roles match your profile and where you need to upskill.",
-      stats: ["Live job analysis", "Skill gap insights", "Market trends"],
+        "Get AI-powered interview preparation specific to each role. Practice with custom questions and get feedback on your responses.",
+      stats: ["Role-specific prep", "24/7 AI support", "90% success rate"],
       theme: {
         bgColor: "#13172a",
         fillColor: "#5ee1c9",
         titleColor: "#f9f9f9",
         textColor: "#f9f9f9",
         isDark: true,
-      },
-      icon: "market",
-    },
-    {
-      id: "expert-support",
-      title: "Application Support",
-      description:
-        "Never apply alone. Get AI-powered assistance for every step of your application process, from resume optimization to interview preparation.",
-      stats: ["24/7 AI support", "Interview prep", "Application guidance"],
-      theme: {
-        bgColor: "#f9f9f9",
-        fillColor: "#0e5dff",
       },
       icon: "support",
     },
@@ -154,6 +127,53 @@ export const siteConfig = {
       number: 5,
       stepTitle: "Apply With Confidence",
       stepDescription: "Submit your application and track your success.",
+    },
+  ],
+  testimonials: [
+    {
+      name: "Michael Zhang",
+      role: "Software Engineer at Clipboard Health",
+      quote:
+        "After 6 months of scattered applications, NextFit AI helped me find my fit at Clipboard Health. The match prediction was impressive - it identified roles that actually aligned with my healthcare tech background. Went from a 5% to 40% response rate in two weeks.",
+    },
+    {
+      name: "Rachel Patel",
+      role: "Data Analyst at Instacart",
+      quote:
+        "The resume optimization tool helped me highlight my SQL expertise and A/B testing experience that Instacart was looking for. It suggested emphasizing my experience with large datasets and analytics tools. Had 3 interviews lined up within days.",
+    },
+    {
+      name: "Alex Rivera",
+      role: "Product Support Specialist at Deel",
+      quote:
+        "NextFit helped me transition from traditional customer service to tech support. It identified transferable skills I hadn't considered and helped me position my experience with payment platforms. Within 3 weeks, I had my dream role at Deel.",
+    },
+  ],
+  faqs: [
+    {
+      question: "How accurate is the AI match prediction?",
+      answer:
+        "Our AI prediction model has an 85% accuracy rate, based on analyzing millions of successful job applications. It considers over 50 different factors including skills, experience, and job requirements.",
+    },
+    {
+      question: "How long does it take to optimize my resume?",
+      answer:
+        "The initial AI analysis and optimization takes just 30 seconds. You can then make additional customizations based on our suggestions, typically taking 5-10 minutes per application.",
+    },
+    {
+      question: "Will this work for my industry?",
+      answer:
+        "Yes! NextFit AI is trained on data from various industries including tech, finance, healthcare, and more. Our system continuously learns from new data to stay current with industry trends.",
+    },
+    {
+      question: "Can I try it before paying?",
+      answer:
+        "Yes! You can analyze your first job application for free. This includes a match prediction score and basic optimization suggestions to help you evaluate our platform.",
+    },
+    {
+      question: "How do I get a refund if I'm not satisfied?",
+      answer:
+        "We offer a 100% money-back guarantee within 30 days if you don't see an improvement in your application success rate. Simply contact our support team with your results.",
     },
   ],
 };

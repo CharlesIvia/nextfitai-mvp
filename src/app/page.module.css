@@ -57,7 +57,7 @@
   font-weight: 700;
   cursor: pointer;
   padding: 2.5rem;
-  background-image: linear-gradient(to right, pink, violet);
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
   transition: all 0.2s ease-out;
   max-width: 30rem;
 }
@@ -387,6 +387,7 @@
 
   .heroDescription p {
     text-align: left;
+    max-width: 70%;
   }
 
   .herovariant {
@@ -406,8 +407,8 @@
   }
 
   .hero div img {
-    width: none;
-    height: none;
+    width: 50rem;
+    height: 50rem;
   }
 
   .heroleft button,

@@ -1,0 +1,84 @@
+/* components/testimonials/testimonials.module.css */
+.testimonials {
+  padding: 8rem 5vw;
+  background: var(--light);
+}
+
+.testimonials h2 {
+  text-align: center;
+  font-size: 4.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6rem;
+}
+
+.testimonialGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+.testimonialCard {
+  background: white;
+  padding: 3rem;
+  border-radius: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.testimonialCard:hover {
+  transform: translateY(-5px);
+}
+
+.quote {
+  font-size: 1.8rem;
+  line-height: 3rem;
+  color: var(--dark);
+  margin-bottom: 2rem;
+}
+
+.author {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.avatar {
+  border-radius: 50%;
+}
+
+.authorInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.role {
+  font-size: 1.4rem;
+  color: var(--gray);
+}
+
+.avatarContainer {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatarIcon {
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .testimonialGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

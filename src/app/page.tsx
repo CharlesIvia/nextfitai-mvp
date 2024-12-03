@@ -7,6 +7,9 @@ import { star, code, group, tool } from "@/utils/icons";
 import Feature from "@/components/feature/feature";
 import Step from "@/components/works/works";
 import Footer from "@/components/footer/footer";
+import PricingCard from "@/components/pricing/pricing";
+import Link from "next/link";
+import { siteConfig } from "@/configs/site";
 
 // Image imports
 
@@ -16,9 +19,8 @@ import pkg from "../../public/features/package.png";
 import time from "../../public/features/time.png";
 import market from "../../public/features/market.png";
 import support from "../../public/features/support.png";
-import PricingCard from "@/components/pricing/pricing";
-import Link from "next/link";
-import { siteConfig } from "@/configs/site";
+import FAQ from "@/components/faqs/faqs";
+import Testimonials from "@/components/testimonials/testimonials";
 
 export default function Home() {
   const [variantIndex, setVariantIndex] = useState(0);
@@ -173,6 +175,14 @@ export default function Home() {
         >
           <button>Optimize My Resume Now</button>
         </Link>
+      </section>
+
+      <section className={styles.testimonials}>
+        <Testimonials />
+      </section>
+
+      <section className={styles.faq}>
+        <FAQ />
       </section>
 
       <section className={styles.footer}>

@@ -1,0 +1,67 @@
+/* components/faq/faq.module.css */
+.faq {
+  padding: 8rem 5vw;
+}
+
+.faq h2 {
+  text-align: center;
+  font-size: 4.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 6rem;
+}
+
+.faqGrid {
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.faqItem {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.faqQuestion {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.faqQuestion h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  transition: transform 0.3s ease;
+}
+
+.iconActive {
+  transform: rotate(180deg);
+}
+
+.faqAnswer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+  color: var(--gray);
+}
+
+.show {
+  max-height: 500px;
+  padding: 2rem;
+  background: white;
+  border-top: 1px solid var(--border);
+}
