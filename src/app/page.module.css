@@ -446,16 +446,3 @@
 }
 @media (min-width: 1400px) {
 }
-/* Large desktops */
-@media (min-width: 1600px) {
-  .features,
-  .cta,
-  .works,
-  .footer {
-    padding: 5rem 17.5vw;
-  }
-
-  .heroContainer {
-    padding: 2rem 17.5vw;
-  }
-}

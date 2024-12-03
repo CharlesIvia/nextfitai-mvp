@@ -41,7 +41,7 @@ export default function Home() {
   // Function to handle plan selection
 
   const handlePlanSelection = (planName: string) => {
-    const baseUrl = "https://ledgeworks.gumroad.com/l/bjorge";
+    const baseUrl = "https://ledgeworks.gumroad.com/";
     window.location.href = baseUrl;
   };
 

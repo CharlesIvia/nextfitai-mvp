@@ -138,7 +138,7 @@ export default function Dashboard() {
                 <FileText className={styles.sectionIcon} />
                 <h2>Recent Applications</h2>
               </div>
-              <button className={styles.viewAllButton}>
+              <button className={styles.viewAllButton} onClick={() => router.push("/dashboard/applications")}>
                 View all
                 <ArrowRight size={16} />
               </button>

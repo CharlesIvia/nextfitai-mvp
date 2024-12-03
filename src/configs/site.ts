@@ -2,7 +2,7 @@ export const siteConfig = {
   plans: [
     {
       name: "Basic",
-      price: "15",
+      price: "11",
       description: "Perfect for targeted job applications",
       features: [
         "AI Resume Analysis",
@@ -15,7 +15,7 @@ export const siteConfig = {
     },
     {
       name: "Pro",
-      price: "29",
+      price: "19",
       description: "For active job seekers",
       features: [
         "Everything in Basic",
@@ -31,7 +31,7 @@ export const siteConfig = {
     },
     {
       name: "Enterprise",
-      price: "Custom",
+      price: "29",
       description: "For recruitment teams & organizations",
       features: [
         "Everything in Pro",
@@ -42,7 +42,7 @@ export const siteConfig = {
         "Advanced Analytics",
         "Dedicated Support",
       ],
-      disabled: false,
+      disabled: true,
     },
   ],
   variants: ["software engineering", "product management", "data science", "design", "marketing", "sales"],
