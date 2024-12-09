@@ -1,67 +1,104 @@
-/* application-details.module.css */
-
+/* Base Container Structure */
 .container {
   min-height: 100vh;
   background: linear-gradient(to bottom right, #f8fafc, #f1f5f9);
 }
 
-/* Header Navigation */
-.headerNav {
-  max-width: 1200px;
+.content {
+  max-width: 100%;
   margin: 0 auto;
-  padding: 2.4rem 2.4rem 0;
+  padding: 1.6rem;
+  padding-bottom: 140px;
 }
 
-.backButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  color: #64748b;
-  font-size: 1.4rem;
-  text-decoration: none;
-  transition: all 0.2s ease;
+.wrapper {
+  margin-top: 5.6rem;
 }
 
-.backButton:hover {
-  color: #0f172a;
-  transform: translateX(-4px);
-}
-
-/* Main Header */
-.header {
-  background: white;
-  border-bottom: 1px solid #e5e7eb;
-  margin-top: 2.4rem;
+/* Job Overview Card */
+.jobOverview {
+  margin-bottom: 2.4rem;
   padding: 2.4rem;
 }
 
-.headerContent {
-  max-width: 1200px;
-  margin: 0 auto;
+.jobContent {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+.jobInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.jobMeta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.jobStatus {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1.2rem;
+  background: #f0fdf4;
+  color: #059669;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 2rem;
+}
+
+.postedDate {
+  font-size: 1.3rem;
+  color: #64748b;
 }
 
 .jobInfo h1 {
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-weight: 600;
   color: #0f172a;
-  margin-bottom: 1.2rem;
+  line-height: 1.3;
 }
 
 .companyDetails {
   display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.companyName {
+  display: flex;
   align-items: center;
   gap: 0.8rem;
+  color: #0f172a;
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.companyMeta {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
   color: #64748b;
   font-size: 1.4rem;
 }
 
-.headerStats {
+.companyMeta span {
   display: flex;
   align-items: center;
-  gap: 2.4rem;
+}
+
+/* Score Card */
+.scoreCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid #e2e8f0;
 }
 
 .matchScore {
@@ -78,11 +115,6 @@
   align-items: center;
   justify-content: center;
   background: white;
-  transition: transform 0.2s ease;
-}
-
-.scoreRing:hover {
-  transform: scale(1.05);
 }
 
 .scoreRing span {
@@ -107,26 +139,64 @@
 }
 
 .status.completed {
-  background: #ecfdf5;
+  background: #f0fdf4;
   color: #059669;
 }
 
-/* Main Content Layout */
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 3.2rem 2.4rem;
+/* Overview Grid */
+.overviewGrid {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr;
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.overviewItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 2rem;
+}
+
+.overviewItem svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #0ea5e9;
+}
+
+.overviewItem h3 {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.overviewStat {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+.overviewMeta {
+  font-size: 1.4rem;
+  color: #64748b;
+}
+
+/* Analysis Layout */
+.analysisLayout {
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 2.4rem;
 }
 
-/* Section Styles */
+.mainColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+}
+
+/* Section Common Styles */
 .section {
-  margin-bottom: 2.4rem;
-  background: white;
-  border-radius: 1.2rem;
-  border: 1px solid #e5e7eb;
   padding: 2.4rem;
 }
 
@@ -134,7 +204,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.4rem;
 }
 
 .sectionTitle {
@@ -143,32 +213,39 @@
   gap: 1.2rem;
 }
 
+.sectionTitle .icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  color: #0ea5e9;
+}
+
 .sectionTitle h2 {
   font-size: 1.8rem;
   font-weight: 600;
   color: #0f172a;
 }
 
-.icon {
-  color: #0ea5e9;
-}
-
 /* Resume Section */
 .resumeCard {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 1.6rem;
   padding: 1.6rem;
   background: #f8fafc;
   border-radius: 0.8rem;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
+}
+
+.resumeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
 .resumeInfo h3 {
   font-size: 1.6rem;
   font-weight: 600;
   color: #0f172a;
-  margin-bottom: 0.4rem;
 }
 
 .resumeInfo p {
@@ -176,48 +253,60 @@
   color: #64748b;
 }
 
-.downloadButton {
+.actionButton {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  margin-left: auto;
-  padding: 0.8rem 1.6rem;
-  background: white;
-  border: 1px solid #e5e7eb;
+  padding: 1.2rem 2.4rem;
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
+  border: none;
   border-radius: 0.8rem;
-  color: #0f172a;
+  color: white;
   font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.downloadButton:hover {
-  background: #f8fafc;
-  border-color: #cbd5e1;
+.downloadButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1.2rem;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  color: #0f172a;
+  font-size: 1.4rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-/* Experience Match */
+/* Experience Match Section */
 .matchContent {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.6rem;
 }
 
 .matchItem {
   display: flex;
+  flex-direction: column;
   gap: 1.6rem;
   padding: 1.6rem;
   background: #f8fafc;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 0.8rem;
 }
 
 .matchStatus {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.8rem;
   font-size: 1.3rem;
   font-weight: 500;
-  white-space: nowrap;
 }
 
 .matched {
@@ -229,14 +318,15 @@
 }
 
 .matchDetails {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
 }
 
 .requirement {
   font-size: 1.4rem;
   font-weight: 500;
   color: #0f172a;
-  margin-bottom: 0.4rem;
 }
 
 .yours {
@@ -244,18 +334,43 @@
   color: #64748b;
 }
 
-/* Skills Match */
+.matchScore {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #0ea5e9;
+}
+
+/* Hover States */
+.actionButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.downloadButton:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+/* Skills Match Section */
 .skillsContent {
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
 }
 
+.skillsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
 .skillsSection h3 {
   font-size: 1.4rem;
   font-weight: 600;
   color: #64748b;
-  margin-bottom: 1.6rem;
 }
 
 .skillTags {
@@ -268,9 +383,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  padding: 0.6rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   background: #f8fafc;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 2rem;
   font-size: 1.3rem;
   color: #0f172a;
@@ -288,7 +403,7 @@
   color: #dc2626;
 }
 
-/* Market Insights */
+/* Market Insights Section */
 .marketContent {
   display: flex;
   flex-direction: column;
@@ -297,8 +412,15 @@
 
 .marketGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: 1fr;
   gap: 2rem;
+}
+
+.marketStat {
+  padding: 1.6rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
 }
 
 .marketStat h3 {
@@ -314,18 +436,45 @@
   color: #0f172a;
 }
 
+.marketSkills {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.marketSkills h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+/* Hover Effects */
+.skillTag {
+  transition: all 0.2s ease;
+}
+
+.skillTag:hover {
+  transform: translateY(-1px);
+}
+
+.marketStat {
+  transition: all 0.2s ease;
+}
+
+.marketStat:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
 /* Sidebar */
 .sidebar {
-  position: sticky;
-  top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
 }
 
 .sidebarCard {
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 1.2rem;
   padding: 2.4rem;
-  margin-bottom: 2.4rem;
 }
 
 .sidebarCard h3 {
@@ -335,51 +484,75 @@
   margin-bottom: 1.6rem;
 }
 
-.strengthsList,
+/* Strengths List */
+.strengthsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.strengthsList li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  font-size: 1.6rem;
+  color: #0f172a;
+}
+
+.strengthsList li span {
+  font-size: 1.2rem;
+}
+
+.strengthsList svg {
+  color: #059669;
+  flex-shrink: 0;
+}
+
+/* Improvements List */
 .improvementsList {
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
-.strengthsList li,
 .improvementsList li {
   display: flex;
   align-items: center;
   gap: 1.2rem;
   padding: 1.2rem;
   background: #f8fafc;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 0.8rem;
   font-size: 1.4rem;
   color: #0f172a;
 }
 
-.strengthsList svg {
-  color: #059669;
+.improvementsList li span {
+  font-size: 1.2rem;
 }
 
 .improvementsList svg {
-  color: #f59e0b;
+  color: #0ea5e9;
+  flex-shrink: 0;
 }
 
+/* Job Link */
 .jobLink {
   display: flex;
   align-items: center;
   gap: 0.8rem;
   padding: 1.2rem;
   background: #f8fafc;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 0.8rem;
   color: #0ea5e9;
   font-size: 1.4rem;
-  transition: all 0.2s ease;
   text-decoration: none;
-}
-
-.jobLink:hover {
-  background: #f0f9ff;
-  border-color: #bae6fd;
+  transition: all 0.2s ease;
 }
 
 /* AI Assistant */
@@ -390,88 +563,277 @@
   right: 2.4rem;
   max-width: 1200px;
   margin: 0 auto;
+  z-index: 10;
 }
 
 .inputWrapper {
   display: flex;
+  flex-direction: column;
   gap: 1.2rem;
   padding: 1.6rem;
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   border-radius: 1.2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .inputWrapper input {
-  flex: 1;
-  border: none;
+  width: 100%;
   padding: 1.2rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
   font-size: 1.4rem;
   color: #0f172a;
-}
-
-.inputWrapper input:focus {
-  outline: none;
 }
 
 .inputWrapper input::placeholder {
   color: #94a3b8;
 }
 
+.inputWrapper input:focus {
+  outline: none;
+  border-color: #0ea5e9;
+}
+
 .sendButton {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.8rem;
-  padding: 1.2rem 2.4rem;
-  background: #3b82f6;
-  color: white;
+  padding: 1.2rem;
+  background-image: linear-gradient(to right, var(--primary), var(--secondary));
   border: none;
   border-radius: 0.8rem;
+  color: white;
   font-size: 1.4rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+/* Hover States */
+.jobLink:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+  border-color: #cbd5e1;
+}
+
 .sendButton:hover {
   opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
+.strengthsList li:hover,
+.improvementsList li:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+  border-color: #cbd5e1;
+}
+
+/* Input Container */
+.inputContainer {
+  position: fixed;
+  bottom: 1.6rem;
+  left: 1.6rem;
+  right: 1.6rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.inputWrapper {
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+}
+
+.inputWrapper input {
+  flex: 1;
+  border: none;
+  font-size: 1.4rem;
+  color: #0f172a;
+  padding: 1rem;
+}
+
+.sendButton {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* Tablet and Desktop Breakpoints */
+@media (min-width: 768px) {
   .content {
-    grid-template-columns: 1fr;
+    max-width: 768px;
   }
 
-  .sidebar {
-    position: static;
+  .jobInfo h1 {
+    font-size: 3.2rem;
   }
 
-  .marketGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .headerContent {
-    flex-direction: column;
-    gap: 2.4rem;
-  }
-
-  .headerStats {
-    width: 100%;
+  .jobContent {
+    flex-direction: row;
     justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .scoreCard {
+    padding-top: 0;
+    border-top: none;
+    align-items: flex-end;
+  }
+
+  .companyDetails {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .section {
+    padding: 2.4rem;
+  }
+
+  .resumeCard {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .resumeInfo {
+    flex: 1;
   }
 
   .matchItem {
-    flex-direction: column;
-    gap: 1.2rem;
+    flex-direction: row;
+  }
+
+  .matchStatus {
+    min-width: 100px;
+  }
+
+  .matchDetails {
+    flex: 1;
+  }
+
+  .skillsContent {
+    gap: 3.2rem;
   }
 
   .marketGrid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 
-  .sendButton span {
-    display: none;
+  .marketStat {
+    padding: 2rem;
+  }
+
+  .inputWrapper {
+    flex-direction: row;
+  }
+
+  .sendButton {
+    padding: 1.2rem 2.4rem;
+  }
+
+  .sidebarCard {
+    padding: 2.4rem;
+  }
+
+  .inputContainer {
+    bottom: 2.4rem;
+    left: 2.4rem;
+    right: 2.4rem;
+  }
+
+  .inputWrapper {
+    padding: 1.2rem;
+    gap: 1.2rem;
+  }
+
+  .inputWrapper input {
+    font-size: 1.6rem;
+    padding: 1.2rem;
+  }
+
+  .sendButton {
+    padding: 1.2rem 2.4rem;
+    font-size: 1.6rem;
+    gap: 0.8rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content {
+    max-width: 1200px;
+  }
+
+  .jobOverview {
+    padding: 3.2rem;
+  }
+
+  .overviewGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .analysisLayout {
+    grid-template-columns: 1fr 320px;
+  }
+
+  .section {
+    padding: 3.2rem;
+  }
+
+  .resumeCard {
+    padding: 2rem;
+  }
+
+  .matchContent {
+    gap: 2rem;
+  }
+
+  .matchItem {
+    padding: 2rem;
+  }
+  .skillsSection h3,
+  .marketSkills h3 {
+    font-size: 1.6rem;
+  }
+
+  .skillTag {
+    padding: 0.8rem 1.6rem;
+    font-size: 1.4rem;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 2.4rem;
+  }
+
+  .sidebarCard {
+    padding: 3.2rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  .content {
+    padding: 2.4rem 3.2rem;
+  }
+
+  .overviewGrid {
+    gap: 2.4rem;
+  }
+
+  .aiAssistant {
+    padding: 0 3.2rem;
   }
 }
