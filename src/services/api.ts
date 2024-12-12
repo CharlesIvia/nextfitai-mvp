@@ -13,6 +13,9 @@ export const api = createApi({
       try {
         // Get Firebase auth token
         const token = await auth.currentUser?.getIdToken();
+
+        console.log("Token", token);
+
         if (token) {
           headers.set("Authorization", `Bearer ${token}`);
 
@@ -72,7 +75,7 @@ export const api = createApi({
         formData.append("file", file);
 
         return {
-          url: `/documents/${fileId}/upload`,
+          url: `/documents/upload/${fileId}`,
           method: "POST",
           // Remove Content-Type header to let browser set it with boundary
           prepareHeaders: (headers: any) => {
@@ -84,11 +87,11 @@ export const api = createApi({
       },
     }),
 
-    // Process document
+    // Analyze document
 
-    processDocument: builder.mutation<void, string>({
-      query: (fileId) => ({
-        url: `/documents/${fileId}/process`,
+    analyzeDocument: builder.mutation<OfferAnalysis, { fileId: string }>({
+      query: ({ fileId }) => ({
+        url: `/openai/resume/${fileId}`,
         method: "POST",
       }),
     }),
@@ -114,9 +117,19 @@ export const api = createApi({
 
     // Analyze offer
 
-    analyzeOffer: builder.mutation<OfferAnalysis, FormData>({
+    analyzeOffer: builder.mutation<void, { fileId: string; data: any }>({
+      query: ({ fileId, data }) => ({
+        url: `/openai/resume/${fileId}`,
+        method: "POST",
+        body: data,
+      }),
+    }),
+
+    // Generate application advice:     const { documentId, jobDescription } = req.body;
+
+    generateApplicationAdvice: builder.mutation<string, { documentId: string; jobDescription: string }>({
       query: (data) => ({
-        url: "/analyze-offer",
+        url: "/openai/application-advice",
         method: "POST",
         body: data,
       }),
@@ -158,7 +171,7 @@ export const {
   useGetEmailTemplateMutation,
   useGetUploadUrlMutation,
   useUploadDocumentMutation,
-  useProcessDocumentMutation,
+  useAnalyzeDocumentMutation,
   useGetUserDocumentsQuery,
   useUpdateDocumentMutation,
   useGetUserProfileQuery,
