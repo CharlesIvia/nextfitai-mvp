@@ -9,6 +9,8 @@ import type {
   UserProfile,
   SubscriptionStatus,
   UserApplications,
+  UploadUrlResponse,
+  UploadDocumentResponse,
 } from "@/types/api";
 import { get } from "http";
 
@@ -20,8 +22,6 @@ export const api = createApi({
       try {
         // Get Firebase auth token
         const token = await auth.currentUser?.getIdToken();
-
-        console.log("Token", token);
 
         if (token) {
           headers.set("Authorization", `Bearer ${token}`);
@@ -67,7 +67,7 @@ export const api = createApi({
     }),
 
     // Get upload URL
-    getUploadUrl: builder.mutation<string, string>({
+    getUploadUrl: builder.mutation<UploadUrlResponse, string>({
       query: (filename) => ({
         url: "/documents/get-upload-url",
         method: "POST",
@@ -76,7 +76,7 @@ export const api = createApi({
     }),
 
     // Upload document - PDF file
-    uploadDocument: builder.mutation<void, { fileId: string; file: File }>({
+    uploadDocument: builder.mutation<UploadDocumentResponse, { fileId: string; file: File }>({
       query: ({ fileId, file }) => {
         const formData = new FormData();
         formData.append("file", file);

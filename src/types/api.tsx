@@ -109,3 +109,23 @@ export interface UserApplications {
     updatedAt: string;
   }[];
 }
+
+export interface UploadUrlResponse {
+  success: boolean;
+  data: {
+    fileId: string;
+    uploadUrl: string;
+  };
+}
+
+export interface UploadDocumentResponse {
+  success: boolean;
+  data: {
+    fileId: string;
+    name: string;
+    status: string;
+    requiresRename: boolean;
+    suggestedName: string | null;
+  };
+  message: string;
+}

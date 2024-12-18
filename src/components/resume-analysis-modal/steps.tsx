@@ -4,6 +4,7 @@
 import { useState, useCallback } from "react";
 import { FileText, Upload, Link as LinkIcon, CheckCircle2, X } from "lucide-react";
 import styles from "./analysis-modal.module.css";
+import { useGetUploadUrlMutation, useUploadDocumentMutation } from "@/services/api";
 
 interface DragState {
   isDragging: boolean;
@@ -18,6 +19,11 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
   const [saveResume, setSaveResume] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [dragState, setDragState] = useState<DragState>({ isDragging: false, isValidFile: true });
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const [getUploadUrl] = useGetUploadUrlMutation();
+  const [uploadDocument] = useUploadDocumentMutation();
 
   const steps = [
     {
@@ -64,6 +70,37 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
     return validTypes.includes(file.type) && file.size <= maxSize;
   };
 
+  // Handle file selection
+
+  const handleFileSelection = async (file: File) => {
+    try {
+      setUploadError(null);
+      setIsUploading(true);
+
+      if (!validateFile(file)) {
+        setDragState((prev) => ({ ...prev, isValidFile: false }));
+        return false;
+      }
+
+      // Step 1: Get upload URL and fileId
+      const response = await getUploadUrl(file.name).unwrap();
+      const { fileId, uploadUrl } = response.data;
+
+      // Step 2: Upload the actual file
+      await uploadDocument({ fileId, file }).unwrap();
+
+      // If both steps succeed, update state
+      setUploadedFile(file);
+      setIsUploading(false);
+      return true;
+    } catch (error) {
+      setIsUploading(false);
+      setUploadError("Failed to upload file. Please try again.");
+      console.error("Error in upload process:", error);
+      return false;
+    }
+  };
+
   const handleDragEnter = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -81,7 +118,7 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
     e.stopPropagation();
   }, []);
 
-  const handleDrop = useCallback((e: React.DragEvent) => {
+  const handleDrop = useCallback(async (e: React.DragEvent) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -89,13 +126,16 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
 
     const file = e.dataTransfer.files[0];
     if (file) {
-      if (validateFile(file)) {
-        setUploadedFile(file);
-      } else {
-        setDragState((prev) => ({ ...prev, isValidFile: false }));
-      }
+      await handleFileSelection(file);
     }
   }, []);
+
+  const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      await handleFileSelection(file);
+    }
+  };
 
   const renderStep = () => {
     switch (currentStep) {
@@ -117,12 +157,7 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
               <input
                 type='file'
                 accept='.pdf,.doc,.docx'
-                onChange={(e) => {
-                  const file = e.target.files?.[0];
-                  if (file && validateFile(file)) {
-                    setUploadedFile(file);
-                  }
-                }}
+                onChange={handleFileInput}
                 className={styles.fileInput}
                 id='resumeUpload'
               />
@@ -156,6 +191,8 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
             {!dragState.isValidFile && (
               <p className={styles.errorMessage}>Please upload a valid PDF or Word document under 10MB</p>
             )}
+
+            {uploadError && <p className={styles.errorMessage}>{uploadError}</p>}
 
             <div className={styles.saveResumeOption}>
               <input
