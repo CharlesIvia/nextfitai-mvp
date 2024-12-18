@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { ResumeAnalysisModal } from "@/components/resume-analysis-modal/steps";
 import { useRouter } from "next/navigation";
+import { LoadingApplicationCard } from "@/components/skeletons/application-card";
 
 export default function Dashboard() {
   const [showAnalysisModal, setShowAnalysisModal] = useState(false);
@@ -145,26 +146,9 @@ export default function Dashboard() {
             </div>
 
             <div className={styles.recentOffersList}>
-              {recentApplications.map((app) => (
-                <div key={app.id} className={styles.recentOfferCard}>
-                  <div className={styles.offerIcon}>
-                    <FileText size={20} />
-                  </div>
-                  <div className={styles.offerInfo}>
-                    <div className={styles.offerMain}>
-                      <h3>{app.company}</h3>
-                      <p>{app.position}</p>
-                      <p className={styles.matchRate}>{app.matchRate} Match</p>
-                    </div>
-                    <div className={styles.offerMeta}>
-                      <span className={`${styles.offerStatus} ${styles[app.status]}`}>
-                        {app.status.charAt(0).toUpperCase() + app.status.slice(1)}
-                      </span>
-                      <span className={styles.offerTime}>{app.timestamp}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <LoadingApplicationCard />
+              <LoadingApplicationCard />
+              <LoadingApplicationCard />
             </div>
           </div>
 
