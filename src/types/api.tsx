@@ -99,3 +99,13 @@ export interface SubscriptionStatus {
     message: string;
   };
 }
+
+export interface UserApplications {
+  data: {
+    id: string;
+    applicationId: string;
+    status: string;
+    createdAt: string;
+    updatedAt: string;
+  }[];
+}

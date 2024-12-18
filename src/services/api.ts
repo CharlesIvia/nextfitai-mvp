@@ -2,7 +2,14 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { auth } from "@/firebase/config";
-import type { OfferAnalysis, EmailTemplate, UserDocumentsResponse, UserProfile, SubscriptionStatus } from "@/types/api";
+import type {
+  OfferAnalysis,
+  EmailTemplate,
+  UserDocumentsResponse,
+  UserProfile,
+  SubscriptionStatus,
+  UserApplications,
+} from "@/types/api";
 import { get } from "http";
 
 export const api = createApi({
@@ -88,11 +95,19 @@ export const api = createApi({
     }),
 
     // Analyze document
-
     analyzeDocument: builder.mutation<OfferAnalysis, { fileId: string }>({
       query: ({ fileId }) => ({
         url: `/openai/resume/${fileId}`,
         method: "POST",
+      }),
+    }),
+
+    // Get all user applications
+
+    getAllApplications: builder.query<UserApplications["data"], void>({
+      query: () => ({
+        url: "/openai/applications",
+        method: "GET",
       }),
     }),
 
@@ -125,7 +140,7 @@ export const api = createApi({
       }),
     }),
 
-    // Generate application advice:     const { documentId, jobDescription } = req.body;
+    // Generate application advice: job description and document ID
 
     generateApplicationAdvice: builder.mutation<string, { documentId: string; jobDescription: string }>({
       query: (data) => ({
