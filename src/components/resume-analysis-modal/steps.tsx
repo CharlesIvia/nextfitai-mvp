@@ -4,7 +4,12 @@
 import { useState, useCallback } from "react";
 import { FileText, Upload, Link as LinkIcon, CheckCircle2, X } from "lucide-react";
 import styles from "./analysis-modal.module.css";
-import { useGetUploadUrlMutation, useUploadDocumentMutation } from "@/services/api";
+import {
+  useGenerateApplicationAdviceMutation,
+  useGetUploadUrlMutation,
+  useSaveJobDescriptionMutation,
+  useUploadDocumentMutation,
+} from "@/services/api";
 
 interface DragState {
   isDragging: boolean;
@@ -14,16 +19,24 @@ interface DragState {
 export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () => void; mode?: "select" | "upload" }) {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedResume, setSelectedResume] = useState("");
-  const [jobInput, setJobInput] = useState("");
+  const [jobDescription, setJobDescription] = useState("");
+  const [jobUrl, setJobUrl] = useState("");
   const [inputType, setInputType] = useState<"text" | "link">("text");
+  const [inputData, setInputData] = useState({
+    text: "",
+    link: "",
+  });
   const [saveResume, setSaveResume] = useState(false);
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [dragState, setDragState] = useState<DragState>({ isDragging: false, isValidFile: true });
   const [uploadError, setUploadError] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [fileId, setFileId] = useState<string | null>(null);
 
   const [getUploadUrl] = useGetUploadUrlMutation();
   const [uploadDocument] = useUploadDocumentMutation();
+  const [analyzeDocument] = useGenerateApplicationAdviceMutation();
+  const [saveJobDescription] = useSaveJobDescriptionMutation();
 
   const steps = [
     {
@@ -86,6 +99,10 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
       const response = await getUploadUrl(file.name).unwrap();
       const { fileId, uploadUrl } = response.data;
 
+      console.log("File ID:", fileId);
+
+      setFileId(fileId);
+
       // Step 2: Upload the actual file
       await uploadDocument({ fileId, file }).unwrap();
 
@@ -134,6 +151,24 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
     const file = e.target.files?.[0];
     if (file) {
       await handleFileSelection(file);
+    }
+  };
+  const handleSaveJobDescription = async () => {
+    try {
+      if (!fileId) {
+        throw new Error("No file ID available");
+      }
+
+      const jobData = {
+        fileId,
+        jobDescription,
+        jobUrl,
+      };
+
+      await saveJobDescription(jobData).unwrap();
+    } catch (error) {
+      console.error("Error saving job description:", error);
+      throw error;
     }
   };
 
@@ -247,15 +282,25 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
 
             <div className={styles.inputSelector}>
               <button
+                type='button'
                 className={`${styles.inputTypeBtn} ${inputType === "text" ? styles.active : ""}`}
-                onClick={() => setInputType("text")}
+                onClick={() => {
+                  setInputType("text");
+                  // Optional: clear URL when switching to text
+                  // setJobUrl("");
+                }}
               >
                 <FileText />
                 Job Description
               </button>
               <button
+                type='button'
                 className={`${styles.inputTypeBtn} ${inputType === "link" ? styles.active : ""}`}
-                onClick={() => setInputType("link")}
+                onClick={() => {
+                  setInputType("link");
+                  // Optional: clear description when switching to link
+                  // setJobDescription("");
+                }}
               >
                 <LinkIcon />
                 Job URL
@@ -266,16 +311,16 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
               <textarea
                 className={styles.jobDescription}
                 placeholder='Paste the job description here...'
-                value={jobInput}
-                onChange={(e) => setJobInput(e.target.value)}
+                value={jobDescription}
+                onChange={(e) => setJobDescription(e.target.value)}
               />
             ) : (
               <input
                 type='url'
                 className={styles.jobUrl}
                 placeholder='Enter the job posting URL...'
-                value={jobInput}
-                onChange={(e) => setJobInput(e.target.value)}
+                value={jobUrl}
+                onChange={(e) => setJobUrl(e.target.value)}
               />
             )}
           </div>
@@ -302,7 +347,7 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
                 <h3>Job Details</h3>
                 <div className={styles.reviewCard}>
                   {inputType === "text" ? <FileText /> : <LinkIcon />}
-                  <span>{jobInput.substring(0, 100)}...</span>
+                  <span>{jobDescription.substring(0, 100)}...</span>
                 </div>
               </div>
             </div>
@@ -336,25 +381,58 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
         </div>
 
         <div className={styles.mainContent}>
-          <div className={styles.contentWrapper}>{renderStep()}</div>
+          <div className={styles.contentWrapper}>
+            {isUploading && (
+              <div className={styles.progressContainer}>
+                <div className={styles.progressBar} style={{ width: "100%" }} />
+                <div className={styles.progressStep}>Uploading your resume...</div>
+              </div>
+            )}
+            {renderStep()}
+          </div>
 
           <div className={styles.navigation}>
             <button
               className={styles.secondaryButton}
               onClick={() => (currentStep > 1 ? setCurrentStep((prev) => prev - 1) : onClose)}
+              disabled={isUploading}
             >
               {currentStep === 1 ? "Cancel" : "Back"}
             </button>
             <button
               className={styles.primaryButton}
-              onClick={() => (currentStep < 3 ? setCurrentStep((prev) => prev + 1) : null)}
+              onClick={async () => {
+                if (currentStep === 2 && mode === "upload" && fileId) {
+                  try {
+                    // Save job description when moving from step 2 to 3
+                    await handleSaveJobDescription();
+                    setCurrentStep(3);
+                  } catch (error) {
+                    // Handle error - maybe show a toast or error message
+                    console.error("Error saving job description:", error);
+                  }
+                } else if (currentStep < 3) {
+                  setCurrentStep((prev) => prev + 1);
+                }
+              }}
               disabled={
+                isUploading ||
                 (currentStep === 1 && mode === "upload" && !uploadedFile) ||
                 (currentStep === 1 && mode === "select" && !selectedResume) ||
-                (currentStep === 2 && !jobInput.trim())
+                (currentStep === 2 &&
+                  ((inputType === "text" && !jobDescription.trim()) || (inputType === "link" && !jobUrl.trim())))
               }
             >
-              {currentStep === 3 ? "Start Analysis" : "Continue"}
+              {isUploading ? (
+                <span className={styles.uploadingState}>
+                  <div className={styles.spinner} />
+                  Uploading...
+                </span>
+              ) : currentStep === 3 ? (
+                "Start Analysis"
+              ) : (
+                "Continue"
+              )}
             </button>
           </div>
         </div>

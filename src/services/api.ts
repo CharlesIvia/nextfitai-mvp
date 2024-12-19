@@ -111,6 +111,16 @@ export const api = createApi({
       }),
     }),
 
+    // Save job description and url
+
+    saveJobDescription: builder.mutation<void, { jobUrl: string; jobDescription: string; fileId: string | null }>({
+      query: ({ jobUrl, jobDescription, fileId }) => ({
+        url: `/documents/jobs/${fileId}`,
+        method: "POST",
+        body: { jobUrl, jobDescription },
+      }),
+    }),
+
     // Get all user documents
     getUserDocuments: builder.query<UserDocumentsResponse["data"], void>({
       query: () => ({
@@ -193,4 +203,6 @@ export const {
   useUpdateUserProfileMutation,
   useSyncSubscriptionMutation,
   useGetSubscriptionStatusQuery,
+  useGenerateApplicationAdviceMutation,
+  useSaveJobDescriptionMutation,
 } = api;
