@@ -16,7 +16,13 @@ interface DragState {
   isValidFile: boolean;
 }
 
-export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () => void; mode?: "select" | "upload" }) {
+interface ResumeAnalysisModalProps {
+  onClose: () => void;
+  mode?: "select" | "upload";
+  onAnalysisComplete?: (result: string) => void;
+}
+
+export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComplete }: ResumeAnalysisModalProps) {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedResume, setSelectedResume] = useState("");
   const [jobDescription, setJobDescription] = useState("");
@@ -35,7 +41,7 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
 
   const [getUploadUrl] = useGetUploadUrlMutation();
   const [uploadDocument] = useUploadDocumentMutation();
-  const [analyzeDocument] = useGenerateApplicationAdviceMutation();
+  const [generateAdvice, { isLoading: isGenerating }] = useGenerateApplicationAdviceMutation();
   const [saveJobDescription] = useSaveJobDescriptionMutation();
 
   const steps = [
@@ -169,6 +175,28 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
     } catch (error) {
       console.error("Error saving job description:", error);
       throw error;
+    }
+  };
+
+  const handleAnalysis = async () => {
+    try {
+      if (!fileId) {
+        throw new Error("No file ID available");
+      }
+
+      const result = await generateAdvice({
+        documentId: fileId,
+        jobDescription: jobDescription,
+      }).unwrap();
+
+      if (onAnalysisComplete) {
+        onAnalysisComplete(result);
+      }
+
+      onClose();
+    } catch (error) {
+      console.error("Error generating application advice:", error);
+      setUploadError("Failed to generate analysis. Please try again.");
     }
   };
 
@@ -356,6 +384,8 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
     }
   };
 
+  console.log("Job Description:", jobDescription);
+
   return (
     <div className={styles.modalOverlay}>
       <div className={styles.modalContainer}>
@@ -411,6 +441,8 @@ export function ResumeAnalysisModal({ onClose, mode = "select" }: { onClose: () 
                     // Handle error - maybe show a toast or error message
                     console.error("Error saving job description:", error);
                   }
+                } else if (currentStep === 3) {
+                  await handleAnalysis();
                 } else if (currentStep < 3) {
                   setCurrentStep((prev) => prev + 1);
                 }
