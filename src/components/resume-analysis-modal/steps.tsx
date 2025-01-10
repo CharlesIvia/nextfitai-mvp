@@ -93,19 +93,20 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
 
   const handleFileSelection = async (file: File) => {
     try {
+      // Reset all upload-related states
       setUploadError(null);
       setIsUploading(true);
+      setFileId(null);
 
       if (!validateFile(file)) {
         setDragState((prev) => ({ ...prev, isValidFile: false }));
+        setIsUploading(false);
         return false;
       }
 
       // Step 1: Get upload URL and fileId
       const response = await getUploadUrl(file.name).unwrap();
       const { fileId, uploadUrl } = response.data;
-
-      console.log("File ID:", fileId);
 
       setFileId(fileId);
 
@@ -156,9 +157,12 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
   const handleFileInput = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
+      // Ensure the file input can re-trigger even for the same file
+      e.target.value = "";
       await handleFileSelection(file);
     }
   };
+
   const handleSaveJobDescription = async () => {
     try {
       if (!fileId) {
@@ -200,6 +204,18 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
     }
   };
 
+  const resetFileState = () => {
+    setUploadedFile(null);
+    setFileId(null);
+    setUploadError(null);
+    setIsUploading(false);
+    setDragState({ isDragging: false, isValidFile: true });
+
+    // Clear the file input's value
+    const fileInput = document.getElementById("resumeUpload") as HTMLInputElement;
+    if (fileInput) fileInput.value = "";
+  };
+
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -233,7 +249,8 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
                       className={styles.removeFile}
                       onClick={(e) => {
                         e.preventDefault();
-                        setUploadedFile(null);
+                        e.stopPropagation();
+                        resetFileState();
                       }}
                     >
                       Remove
@@ -241,11 +258,22 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
                   </div>
                 ) : (
                   <div className={styles.uploadPrompt}>
-                    <Upload />
-                    <span className={styles.mainText}>
-                      {dragState.isDragging ? "Drop your resume here" : "Drag and drop your resume or click to browse"}
-                    </span>
-                    <span className={styles.supportedFormats}>Supported formats: PDF, DOC, DOCX (max 10MB)</span>
+                    {isUploading ? (
+                      <>
+                        <div className={styles.spinner}></div>
+                        <span className={styles.supportedFormats}>Uploading your resume...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Upload />
+                        <span className={styles.mainText}>
+                          {dragState.isDragging
+                            ? "Drop your resume here"
+                            : "Drag and drop your resume or click to browse"}
+                        </span>
+                        <span className={styles.supportedFormats}>Supported formats: PDF, DOC, DOCX (max 10MB)</span>
+                      </>
+                    )}
                   </div>
                 )}
               </label>
@@ -411,15 +439,7 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
         </div>
 
         <div className={styles.mainContent}>
-          <div className={styles.contentWrapper}>
-            {isUploading && (
-              <div className={styles.progressContainer}>
-                <div className={styles.progressBar} style={{ width: "100%" }} />
-                <div className={styles.progressStep}>Uploading your resume...</div>
-              </div>
-            )}
-            {renderStep()}
-          </div>
+          <div className={styles.contentWrapper}>{renderStep()}</div>
 
           <div className={styles.navigation}>
             <button
@@ -455,16 +475,7 @@ export function ResumeAnalysisModal({ onClose, mode = "select", onAnalysisComple
                   ((inputType === "text" && !jobDescription.trim()) || (inputType === "link" && !jobUrl.trim())))
               }
             >
-              {isUploading ? (
-                <span className={styles.uploadingState}>
-                  <div className={styles.spinner} />
-                  Uploading...
-                </span>
-              ) : currentStep === 3 ? (
-                "Start Analysis"
-              ) : (
-                "Continue"
-              )}
+              {isUploading ? "Uploading" : currentStep === 3 ? "Start Analysis" : "Continue"}
             </button>
           </div>
         </div>

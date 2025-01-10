@@ -425,10 +425,10 @@
   border: 2px solid #f3f3f3;
   border-top: 2px solid #3b82f6;
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   animation: spin 1s linear infinite;
-  margin-right: 8px;
+  margin-bottom: 1.2rem;
 }
 
 @keyframes spin {
