@@ -1,18 +1,15 @@
 "use client";
 
-import { TrendingUp, Mail, Settings, User, ArrowRight, FileText, Upload, Send } from "lucide-react";
+import { TrendingUp, Mail, Settings, User, Upload, Send, FileText } from "lucide-react";
 import styles from "./dashboard.module.css";
-import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { ResumeAnalysisModal } from "@/components/resume-analysis-modal/steps";
 import { useRouter } from "next/navigation";
-import { LoadingApplicationCard } from "@/components/skeletons/application-card";
+import { RecentApplicationsSection } from "@/components/applications/RecentApplicationsSection";
 
 export default function Dashboard() {
   const [showAnalysisModal, setShowAnalysisModal] = useState(false);
   const [modalMode, setModalMode] = useState<"select" | "upload">("select");
-
   const router = useRouter();
 
   const quickActions = [
@@ -33,33 +30,6 @@ export default function Dashboard() {
       title: "Job Questions",
       subtitle: "Get AI-powered answers",
       action: "questions",
-    },
-  ];
-
-  const recentApplications = [
-    {
-      id: 1,
-      company: "Google",
-      position: "Senior Software Engineer",
-      status: "pending",
-      timestamp: "2h ago",
-      matchRate: "92%",
-    },
-    {
-      id: 2,
-      company: "Microsoft",
-      position: "Product Manager",
-      status: "analyzed",
-      timestamp: "5h ago",
-      matchRate: "88%",
-    },
-    {
-      id: 3,
-      company: "Meta",
-      position: "Data Scientist",
-      status: "completed",
-      timestamp: "1d ago",
-      matchRate: "95%",
     },
   ];
 
@@ -133,24 +103,7 @@ export default function Dashboard() {
           </div>
 
           {/* Recent Applications Section */}
-          <div className={styles.recentOffersSection}>
-            <div className={styles.sectionHeader}>
-              <div className={styles.sectionTitle}>
-                <FileText className={styles.sectionIcon} />
-                <h2>Recent Applications</h2>
-              </div>
-              <button className={styles.viewAllButton} onClick={() => router.push("/dashboard/applications")}>
-                View all
-                <ArrowRight size={16} />
-              </button>
-            </div>
-
-            <div className={styles.recentOffersList}>
-              <LoadingApplicationCard />
-              <LoadingApplicationCard />
-              <LoadingApplicationCard />
-            </div>
-          </div>
+          <RecentApplicationsSection onStartAnalysis={handleStartAnalysis} />
 
           {/* Quick Actions */}
           <div className={styles.quickActions}>
@@ -204,7 +157,7 @@ export default function Dashboard() {
         </main>
       </div>
       {/* Analysis Modal */}
-      {showAnalysisModal && <ResumeAnalysisModal mode={modalMode} onClose={() => setShowAnalysisModal(false)} />}{" "}
+      {showAnalysisModal && <ResumeAnalysisModal mode={modalMode} onClose={() => setShowAnalysisModal(false)} />}
     </div>
   );
 }

@@ -523,6 +523,76 @@
   font-weight: 500;
 }
 
+.applicationCard {
+  padding: 1rem;
+  background: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.cardHeader h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.matchRate {
+  background: #e5f6ff;
+  color: #0066cc;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.position {
+  color: #4a4a4a;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.status {
+  text-transform: capitalize;
+  color: #666;
+}
+
+.timestamp {
+  color: #888;
+}
+
+.errorState,
+.emptyState {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.errorState p {
+  color: #dc2626;
+}
+
+.emptyState p {
+  color: #666;
+  margin-bottom: 1rem;
+}
+
 /* Tablet and Desktop Styles */
 @media (min-width: 768px) {
   .logo {
