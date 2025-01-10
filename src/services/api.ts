@@ -205,4 +205,5 @@ export const {
   useGetSubscriptionStatusQuery,
   useGenerateApplicationAdviceMutation,
   useSaveJobDescriptionMutation,
+  useGetAllApplicationsQuery,
 } = api;
